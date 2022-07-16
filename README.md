@@ -125,8 +125,9 @@ In this section we will discuss the approach taken to compute the Time-To-To Col
 Time-To-Collison is the duration until the collision with the preceeding Vehicle whose speed is lower than the Vehicle calculating the TTC. Time-To-Collision information can be used in Advanced Driver Assistance Systems (ADAS) such as Forward Collision Warning (FCW) and Collision Avoidance System (CAS). We will calculate it base on distance information we get from the LiDAR point cloud but other sensor technologies can also be used. Later in the report we will discuss how to calculate TTC using a monocamera.
 
 <p align="center">
-<img src="images/traffic_scenario.png" width="779" height="414" />
-
+<img src="images/traffic_scenario.png" width="1014" height="503" />
+</p>
+<p align="center">
 Traffic scenario
 </p>
 
@@ -135,24 +136,27 @@ In the case of LIDAR we have to model the Vehicle motion so the TTC information 
 2. The preceeding Vehicle deceleration is constant.
 
 <p align="center">
-<img src="images/cvm_cam.png" width="779" height="414" />
-
+<img src="images/cvm_cam.png" width="1021" height="493" />
+</p>
+<p align="center">
 Motion models
 </p>
 
 Since in this project we are have a limited set of input images we will assume that the preceeding Vehicle speed is constant in order to simplify our model. This model cannot be used in production systems since it can introduce significant error is situations where the preceeding Vehicle is strongly breaking for example and usually in production system the constant acceleration model is used.
 
 <p align="center">
-<img src="images/lidar_ttc.png" width="779" height="414" />
-
+<img src="images/lidar_ttc.png" width="1015" height="339" />
+</p>
+<p align="center">
 LIDAR TTC calculation approach
 </p>
 
 As it can be seen in the image above to calculate the TTC we will measure distance d0 to the preceeding Vehicle in the t0 instance and the distance d1 in the t1 instance and use it as inputs to the Constant Velocity Model presented by the equations below:
 
 <p align="center">
-<img src="images/lidar_ttc_eq.png" width="779" height="414" />
-
+<img src="images/lidar_ttc_eq.png" width="1015" height="336" />
+</p>
+<p align="center">
 TTC calculation equations
 </p>
 
@@ -228,16 +232,18 @@ Besides the LIDAR base TTC, a camera based TTC estimation was also implemented i
 Despite the limitations it is still posible to measure the distance using a monocamera due to the fact that we can associate a change in object distance with the change in size of object projection on a camera sensor. In the following figure, you can see how the height H of the preceding vehicle can be mapped onto the image plane using perspective projection. We can see that the same height H maps to different heights h0 and h1 in the image plane, depending on the distance d0 and d1 of the vehicle. It is obvious that there is a geometric relation between h, H, d and the focal length f of the pinhole camera.
 
 <p align="center">
-<img src="images/camera_projection.png" width="779" height="414" />
-
+<img src="images/camera_projection.png" width="1016" height="387" />
+</p>
+<p align="center">
 Motion models
 </p>
 
 
 Based on this we can derive following equations:
 <p align="center">
-<img src="images/TTC_camera_eq.png" width="779" height="414" />
-
+<img src="images/TTC_camera_eq.png" width="1016" height="487" />
+</p>
+<p align="center">
 TTC computation modelling using a monocamera
 </p>
 
@@ -289,13 +295,15 @@ From the distance ratio vector we then find a median distance and calculate the 
 In this section LIDAR performance is discussed. When comparing the LIDAR and CAMERA based TTC estimation we can see some deviation for the LIDAR side.
 
 <p align="center">
-<img src="images/performance_1_1.PNG" width="779" height="414" />
-
-Example 1
-
+<img src="images/performance_1_1.PNG" width="830" height="250" />
+</p>
 <p align="center">
-<center><img src="images/performance_1_4.PNG" width="779" height="414" />
-
+Example 1
+</p>
+<p align="center">
+<center><img src="images/performance_1_4.PNG" width="830" height="250" />
+</p>
+<p align="center">
 Example 2
 </p>
 
@@ -309,6 +317,7 @@ Reasons for this can be:
 
 To evaluate Camera based TTC performance the pipeline was executed for most of the Detector/Descriptor combinations. Average TTC, MinimumTTC and Maximum TTC were evaluated. 
 
+<p align="center">
 
 | Desc.\Det. | SHITOMASI | HARRIS | FAST | BRISK | ORB | AKAZE | SIFT |
 | ------ | ------ | ------ | ------ |------ | ------ | ------ |------ |
@@ -318,9 +327,11 @@ To evaluate Camera based TTC performance the pipeline was executed for most of t
 | FREAK |12.6304  |-inf|12.5335|14.2398|-inf|12.2216|11.7513
 | AKAZE  |n/a  |n/a|n/a|n/a|n/a|12.433|n/a
 
+</p>
 <p align="center">
 Average TTC
 </p>
+<p align="center">
 
 | Desc.\Det. | SHITOMASI | HARRIS | FAST | BRISK | ORB | AKAZE | SIFT |
 | ------ | ------ | ------ | ------ |------ | ------ | ------ |------ |
@@ -330,9 +341,11 @@ Average TTC
 | FREAK |10.6551  |-inf|10.2745|8.8529|-inf|8.94208|8.61572
 | AKAZE  | n/a |n/a|n/a|n/a|n/a|9.00531|n/a
 
+</p>
 <p align="center">
 Minimum TTC
 </p>
+<p align="center">
 
 | Desc.\Det. | SHITOMASI | HARRIS | FAST | BRISK | ORB | AKAZE | SIFT |
 | ------ | ------ | ------ | ------ |------ | ------ | ------ |------ |
@@ -342,6 +355,7 @@ Minimum TTC
 | FREAK |  19.2777 |70.3024|15.7363|23.8766|186.726|15.6829|19.6764
 | AKAZE  | n/a |n/a|n/a|n/a|n/a|16.4965|n/a
 
+</p>
 <p align="center">
 Maximum TTC
 </p>
