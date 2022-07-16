@@ -126,6 +126,7 @@ Time-To-Collison is the duration until the collision with the preceeding Vehicle
 
 <p align="center">
 <img src="images/traffic_scenario.png" width="779" height="414" />
+
 Traffic scenario
 </p>
 
@@ -133,8 +134,9 @@ In the case of LIDAR we have to model the Vehicle motion so the TTC information 
 1. The preceeding Vehicle speed is constant, or
 2. The preceeding Vehicle deceleration is constant.
 
-
+<p align="center">
 <img src="images/cvm_cam.png" width="779" height="414" />
+
 Motion models
 </p>
 
@@ -142,6 +144,7 @@ Since in this project we are have a limited set of input images we will assume t
 
 <p align="center">
 <img src="images/lidar_ttc.png" width="779" height="414" />
+
 LIDAR TTC calculation approach
 </p>
 
@@ -149,6 +152,7 @@ As it can be seen in the image above to calculate the TTC we will measure distan
 
 <p align="center">
 <img src="images/lidar_ttc_eq.png" width="779" height="414" />
+
 TTC calculation equations
 </p>
 
@@ -225,6 +229,7 @@ Despite the limitations it is still posible to measure the distance using a mono
 
 <p align="center">
 <img src="images/camera_projection.png" width="779" height="414" />
+
 Motion models
 </p>
 
@@ -232,6 +237,7 @@ Motion models
 Based on this we can derive following equations:
 <p align="center">
 <img src="images/TTC_camera_eq.png" width="779" height="414" />
+
 TTC computation modelling using a monocamera
 </p>
 
@@ -284,9 +290,12 @@ In this section LIDAR performance is discussed. When comparing the LIDAR and CAM
 
 <p align="center">
 <img src="images/performance_1_1.PNG" width="779" height="414" />
+
 Example 1
 
+<p align="center">
 <center><img src="images/performance_1_4.PNG" width="779" height="414" />
+
 Example 2
 </p>
 
@@ -300,7 +309,7 @@ Reasons for this can be:
 
 To evaluate Camera based TTC performance the pipeline was executed for most of the Detector/Descriptor combinations. Average TTC, MinimumTTC and Maximum TTC were evaluated. 
 
-<p align="center">
+
 | Desc.\Det. | SHITOMASI | HARRIS | FAST | BRISK | ORB | AKAZE | SIFT |
 | ------ | ------ | ------ | ------ |------ | ------ | ------ |------ |
 | BRISK|13.4891  |-inf|13.303|14.0049|39.8402|12.4057|12.0114 | 
@@ -308,7 +317,10 @@ To evaluate Camera based TTC performance the pipeline was executed for most of t
 | ORB | 11.5568|-inf|11.5554|13.8099|17.6789|12.4282|Out Of Memory
 | FREAK |12.6304  |-inf|12.5335|14.2398|-inf|12.2216|11.7513
 | AKAZE  |n/a  |n/a|n/a|n/a|n/a|12.433|n/a
+
+<p align="center">
 Average TTC
+</p>
 
 | Desc.\Det. | SHITOMASI | HARRIS | FAST | BRISK | ORB | AKAZE | SIFT |
 | ------ | ------ | ------ | ------ |------ | ------ | ------ |------ |
@@ -317,7 +329,10 @@ Average TTC
 | ORB | 8.02661 |-inf|9.18883|9.70919|8.46717|8.77253|Out Of Memory
 | FREAK |10.6551  |-inf|10.2745|8.8529|-inf|8.94208|8.61572
 | AKAZE  | n/a |n/a|n/a|n/a|n/a|9.00531|n/a
+
+<p align="center">
 Minimum TTC
+</p>
 
 | Desc.\Det. | SHITOMASI | HARRIS | FAST | BRISK | ORB | AKAZE | SIFT |
 | ------ | ------ | ------ | ------ |------ | ------ | ------ |------ |
@@ -326,6 +341,8 @@ Minimum TTC
 | ORB | 13.992 |18.2178|14.369|20.5613|30.9371|15.948|Out Of Memory
 | FREAK |  19.2777 |70.3024|15.7363|23.8766|186.726|15.6829|19.6764
 | AKAZE  | n/a |n/a|n/a|n/a|n/a|16.4965|n/a
+
+<p align="center">
 Maximum TTC
 </p>
 
@@ -334,13 +351,12 @@ Detector/Descriptor combination which were identified as the Top 3 best performi
 * FAST/ORB
 * FAST/FREAK
 
-<p align="center">
+
 |  | Average TTC | Minimum TTC | Maximum TTC |
 | ------ | ------ | ------ | ------ |
 | FAST/BRIEF |12.0458  |9.92931|13.7671|
 | FAST/ORB | 11.5554 |9.18883|14.369|
 | FAST/FREAK | 12.5335 |10.2745|15.7363|
-</p>
 
 The poorest performing, still functional Detector/Descriptor combination are mainly those with ORB and to a lesser degree with BRISK used as detectors. 
 The poor results might be explained with: 
