@@ -124,23 +124,23 @@ In this section we will discuss the approach taken to compute the Time-To-To Col
 
 Time-To-Collison is the duration until the collision with the preceeding Vehicle whose speed is lower than the Vehicle calculating the TTC. Time-To-Collision information can be used in Advanced Driver Assistance Systems (ADAS) such as Forward Collision Warning (FCW) and Collision Avoidance System (CAS). We will calculate it base on distance information we get from the LiDAR point cloud but other sensor technologies can also be used. Later in the report we will discuss how to calculate TTC using a monocamera.
 
-<center><img src=“images/traffic_scenario.png” width=“779” height=“414” ></center>
+<center><img src="images/traffic_scenario.png" width="779" height="414" ></center>
 <center>Traffic scenario</center>
 
 In the case of LIDAR we have to model the Vehicle motion so the TTC information can be calculated with distance to obstacle and time between successive measurements used as inputs. To model the Vehicle motion correctly some simplifying assumption have to be taken: We can either assume that relative to the Vehicle calculating the TTC,
 1. The preceeding Vehicle speed is constant, or
 2. The preceeding Vehicle deceleration is constant.
 
-<center><img src=“images/cvm_cam.png” width=“779” height=“414” ></center>
+<center><img src="images/cvm_cam.png" width="779" height="414" ></center>
 <center>Motion models</center>
 
 Since in this project we are have a limited set of input images we will assume that the preceeding Vehicle speed is constant in order to simplify our model. This model cannot be used in production systems since it can introduce significant error is situations where the preceeding Vehicle is strongly breaking for example and usually in production system the constant acceleration model is used.
 
-<center><img src=“images/lidar_ttc.png” width=“779” height=“414” ></center>
+<center><img src="images/lidar_ttc.png" width="779" height="414" ></center>
 <center>LIDAR TTC calculation approach</center>
 
 As it can be seen in the image above to calculate the TTC we will measure distance d0 to the preceeding Vehicle in the t0 instance and the distance d1 in the t1 instance and use it as inputs to the Constant Velocity Model presented by the equations below:
-<center><img src=“images/lidar_ttc_eq.png” width=“779” height=“414” ></center>
+<center><img src="images/lidar_ttc_eq.png" width="779" height="414" ></center>
 <center>TTC calculation equations</center>
 
 ### FP.2.1 Implementation
@@ -214,11 +214,11 @@ Besides the LIDAR base TTC, a camera based TTC estimation was also implemented i
 
 Despite the limitations it is still posible to measure the distance using a monocamera due to the fact that we can associate a change in object distance with the change in size of object projection on a camera sensor. In the following figure, you can see how the height H of the preceding vehicle can be mapped onto the image plane using perspective projection. We can see that the same height H maps to different heights h0 and h1 in the image plane, depending on the distance d0 and d1 of the vehicle. It is obvious that there is a geometric relation between h, H, d and the focal length f of the pinhole camera.
 
-<center><img src=“images/camera_projection.png” width=“779” height=“414” ></center>
+<center><img src="images/camera_projection.png" width="779" height="414" ></center>
 <center>Motion models</center>
 
 Based on this we can derive following equations:
-<center><img src=“images/TTC_camera_eq.png” width=“779” height=“414” ></center>
+<center><img src="images/TTC_camera_eq.png" width="779" height="414" ></center>
 <center>TTC computation modelling using a monocamera</center>
 
 In the project this was implemented in the function ```void computeTTCCamera(std::vector<cv::KeyPoint> &kptsPrev, std::vector<cv::KeyPoint> &kptsCurr, std::vector<cv::DMatch> kptMatches, double frameRate, double &TTC_v0, cv::Mat *visImg)``` where vectors of Keypoints on previous and current frame, a vector of Matches from the Bounding box structure associated with the current frame, as well as the frame rate were passed as inputs for the TTC computation.
@@ -268,10 +268,10 @@ From the distance ratio vector we then find a median distance and calculate the 
 
 In this section LIDAR performance is discussed. When comparing the LIDAR and CAMERA based TTC estimation we can see some deviation for the LIDAR side.
 
-<center><img src=“images/performance_1_1.png” width=“779” height=“414” ></center>
+<center><img src="images/performance_1_1.png" width="779" height="414" ></center>
 <center>Example 1</center>
 
-<center><img src=“images/performance_1_4.png” width=“779” height=“414” ></center>
+<center><img src="images/performance_1_4.png" width="779" height="414" ></center>
 <center>Example 2</center>
 
 Reasons for this can be:
