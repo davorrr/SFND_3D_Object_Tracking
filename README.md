@@ -322,6 +322,7 @@ Reasons for this can be:
 To evaluate Camera based TTC performance the pipeline was executed for most of the Detector/Descriptor combinations. Average TTC, MinimumTTC and Maximum TTC were evaluated. 
 
 <p align="center">
+ 
 | Desc.\Det. | SHITOMASI | HARRIS | FAST | BRISK | ORB | AKAZE | SIFT |
 | ------ | ------ | ------ | ------ |------ | ------ | ------ |------ |
 | BRISK|13.4891  |-inf|13.303|14.0049|39.8402|12.4057|12.0114 | 
@@ -329,12 +330,14 @@ To evaluate Camera based TTC performance the pipeline was executed for most of t
 | ORB | 11.5568|-inf|11.5554|13.8099|17.6789|12.4282|Out Of Memory
 | FREAK |12.6304  |-inf|12.5335|14.2398|-inf|12.2216|11.7513
 | AKAZE  |n/a  |n/a|n/a|n/a|n/a|12.433|n/a
+
 </p>
 <p align="center">
 Average TTC
 </p>
 
 <p align="center">
+ 
 | Desc.\Det. | SHITOMASI | HARRIS | FAST | BRISK | ORB | AKAZE | SIFT |
 | ------ | ------ | ------ | ------ |------ | ------ | ------ |------ |
 | BRISK|9.94909 |-inf|10.1057|9.41747|8.29001|8.94665|8.75213|
@@ -342,12 +345,14 @@ Average TTC
 | ORB | 8.02661 |-inf|9.18883|9.70919|8.46717|8.77253|Out Of Memory
 | FREAK |10.6551  |-inf|10.2745|8.8529|-inf|8.94208|8.61572
 | AKAZE  | n/a |n/a|n/a|n/a|n/a|9.00531|n/a
+
 </p>
 <p align="center">
 Minimum TTC
 </p>
 
 <p align="center">
+ 
 | Desc.\Det. | SHITOMASI | HARRIS | FAST | BRISK | ORB | AKAZE | SIFT |
 | ------ | ------ | ------ | ------ |------ | ------ | ------ |------ |
 | BRISK|35.5348 |284.161|16.5077|25.3548|427.443|16.2011|19.4978|
@@ -355,6 +360,7 @@ Minimum TTC
 | ORB | 13.992 |18.2178|14.369|20.5613|30.9371|15.948|Out Of Memory
 | FREAK |  19.2777 |70.3024|15.7363|23.8766|186.726|15.6829|19.6764
 | AKAZE  | n/a |n/a|n/a|n/a|n/a|16.4965|n/a
+
 </p>
 <p align="center">
 Maximum TTC
