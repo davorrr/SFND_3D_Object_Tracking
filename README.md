@@ -2,7 +2,10 @@
 
 Welcome to the final project of the camera course. By completing all the lessons, you now have a solid understanding of keypoint detectors, descriptors, and methods to match them between successive images. Also, you know how to detect objects in an image using the YOLO deep-learning framework. And finally, you know how to associate regions in a camera image with Lidar points in 3D space. Let's take a look at our program schematic to see what we already have accomplished and what's still missing.
 
+<p align="center">
 <img src="images/course_code_structure.png" width="779" height="414" />
+</p>
+
 
 In this final project, you will implement the missing parts in the schematic. To do this, you will complete four major tasks: 
 
@@ -300,6 +303,7 @@ In this section LIDAR performance is discussed. When comparing the LIDAR and CAM
 <p align="center">
 Example 1
 </p>
+
 <p align="center">
 <center><img src="images/performance_1_4.PNG" width="830" height="250" />
 </p>
